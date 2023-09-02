@@ -15,11 +15,10 @@ dependencies:
   flutter:
     sdk: flutter
   image: ^2.1.4
-  intl: ^0.16.1
+  intl:
   path_provider: ^1.6.5
   ping_discover_network: ^0.2.0+1
   qr_flutter: ^3.2.0
-  wifi: ^0.1.5
   # esc_pos_utils:
   # path: ../../../esc_pos_utils
 
