@@ -1,9 +1,9 @@
 import 'dart:typed_data';
 
+import 'package:esc_pos_utils_plus/esc_pos_utils_plus.dart';
 import 'package:flutter/material.dart' hide Image;
 import 'package:esc_pos_printer/esc_pos_printer.dart';
 import 'package:flutter/services.dart';
-import 'package:esc_pos_utils/esc_pos_utils.dart';
 import 'package:image/image.dart';
 
 void main() => runApp(MyApp());
@@ -34,16 +34,21 @@ class _MyHomePageState extends State<MyHomePage> {
   TextEditingController portController = TextEditingController(text: '9100');
 
   Future<void> testReceipt(NetworkPrinter printer) async {
-    printer.text('Regular: aA bB cC dD eE fF gG hH iI jJ kK lL mM nN oO pP qQ rR sS tT uU vV wW xX yY zZ');
-    printer.text('Special 1: àÀ èÈ éÉ ûÛ üÜ çÇ ôÔ', styles: PosStyles(codeTable: 'CP1252'));
-    printer.text('Special 2: blåbærgrød', styles: PosStyles(codeTable: 'CP1252'));
+    printer.text(
+        'Regular: aA bB cC dD eE fF gG hH iI jJ kK lL mM nN oO pP qQ rR sS tT uU vV wW xX yY zZ');
+    printer.text('Special 1: àÀ èÈ éÉ ûÛ üÜ çÇ ôÔ',
+        styles: PosStyles(codeTable: 'CP1252'));
+    printer.text('Special 2: blåbærgrød',
+        styles: PosStyles(codeTable: 'CP1252'));
 
     printer.text('Bold text', styles: PosStyles(bold: true));
     printer.text('Reverse text', styles: PosStyles(reverse: true));
-    printer.text('Underlined text', styles: PosStyles(underline: true), linesAfter: 1);
+    printer.text('Underlined text',
+        styles: PosStyles(underline: true), linesAfter: 1);
     printer.text('Align left', styles: PosStyles(align: PosAlign.left));
     printer.text('Align center', styles: PosStyles(align: PosAlign.center));
-    printer.text('Align right', styles: PosStyles(align: PosAlign.right), linesAfter: 1);
+    printer.text('Align right',
+        styles: PosStyles(align: PosAlign.right), linesAfter: 1);
 
     printer.row([
       PosColumn(
@@ -109,41 +114,54 @@ class _MyHomePageState extends State<MyHomePage> {
         linesAfter: 1);
 
     printer.text('889  Watson Lane', styles: PosStyles(align: PosAlign.center));
-    printer.text('New Braunfels, TX', styles: PosStyles(align: PosAlign.center));
-    printer.text('Tel: 830-221-1234', styles: PosStyles(align: PosAlign.center));
-    printer.text('Web: www.example.com', styles: PosStyles(align: PosAlign.center), linesAfter: 1);
+    printer.text('New Braunfels, TX',
+        styles: PosStyles(align: PosAlign.center));
+    printer.text('Tel: 830-221-1234',
+        styles: PosStyles(align: PosAlign.center));
+    printer.text('Web: www.example.com',
+        styles: PosStyles(align: PosAlign.center), linesAfter: 1);
 
     printer.hr();
     printer.row([
       PosColumn(text: 'Qty', width: 1),
       PosColumn(text: 'Item', width: 7),
-      PosColumn(text: 'Price', width: 2, styles: PosStyles(align: PosAlign.right)),
-      PosColumn(text: 'Total', width: 2, styles: PosStyles(align: PosAlign.right)),
+      PosColumn(
+          text: 'Price', width: 2, styles: PosStyles(align: PosAlign.right)),
+      PosColumn(
+          text: 'Total', width: 2, styles: PosStyles(align: PosAlign.right)),
     ]);
 
     printer.row([
       PosColumn(text: '2', width: 1),
       PosColumn(text: 'ONION RINGS', width: 7),
-      PosColumn(text: '0.99', width: 2, styles: PosStyles(align: PosAlign.right)),
-      PosColumn(text: '1.98', width: 2, styles: PosStyles(align: PosAlign.right)),
+      PosColumn(
+          text: '0.99', width: 2, styles: PosStyles(align: PosAlign.right)),
+      PosColumn(
+          text: '1.98', width: 2, styles: PosStyles(align: PosAlign.right)),
     ]);
     printer.row([
       PosColumn(text: '1', width: 1),
       PosColumn(text: 'PIZZA', width: 7),
-      PosColumn(text: '3.45', width: 2, styles: PosStyles(align: PosAlign.right)),
-      PosColumn(text: '3.45', width: 2, styles: PosStyles(align: PosAlign.right)),
+      PosColumn(
+          text: '3.45', width: 2, styles: PosStyles(align: PosAlign.right)),
+      PosColumn(
+          text: '3.45', width: 2, styles: PosStyles(align: PosAlign.right)),
     ]);
     printer.row([
       PosColumn(text: '1', width: 1),
       PosColumn(text: 'SPRING ROLLS', width: 7),
-      PosColumn(text: '2.99', width: 2, styles: PosStyles(align: PosAlign.right)),
-      PosColumn(text: '2.99', width: 2, styles: PosStyles(align: PosAlign.right)),
+      PosColumn(
+          text: '2.99', width: 2, styles: PosStyles(align: PosAlign.right)),
+      PosColumn(
+          text: '2.99', width: 2, styles: PosStyles(align: PosAlign.right)),
     ]);
     printer.row([
       PosColumn(text: '3', width: 1),
       PosColumn(text: 'CRUNCHY STICKS', width: 7),
-      PosColumn(text: '0.85', width: 2, styles: PosStyles(align: PosAlign.right)),
-      PosColumn(text: '2.55', width: 2, styles: PosStyles(align: PosAlign.right)),
+      PosColumn(
+          text: '0.85', width: 2, styles: PosStyles(align: PosAlign.right)),
+      PosColumn(
+          text: '2.55', width: 2, styles: PosStyles(align: PosAlign.right)),
     ]);
     printer.hr();
 
@@ -168,16 +186,29 @@ class _MyHomePageState extends State<MyHomePage> {
     printer.hr(ch: '=', linesAfter: 1);
 
     printer.row([
-      PosColumn(text: 'Cash', width: 8, styles: PosStyles(align: PosAlign.right, width: PosTextSize.size2)),
-      PosColumn(text: '\$15.00', width: 4, styles: PosStyles(align: PosAlign.right, width: PosTextSize.size2)),
+      PosColumn(
+          text: 'Cash',
+          width: 8,
+          styles: PosStyles(align: PosAlign.right, width: PosTextSize.size2)),
+      PosColumn(
+          text: '\$15.00',
+          width: 4,
+          styles: PosStyles(align: PosAlign.right, width: PosTextSize.size2)),
     ]);
     printer.row([
-      PosColumn(text: 'Change', width: 8, styles: PosStyles(align: PosAlign.right, width: PosTextSize.size2)),
-      PosColumn(text: '\$4.03', width: 4, styles: PosStyles(align: PosAlign.right, width: PosTextSize.size2)),
+      PosColumn(
+          text: 'Change',
+          width: 8,
+          styles: PosStyles(align: PosAlign.right, width: PosTextSize.size2)),
+      PosColumn(
+          text: '\$4.03',
+          width: 4,
+          styles: PosStyles(align: PosAlign.right, width: PosTextSize.size2)),
     ]);
 
     printer.feed(2);
-    printer.text('Thank you!', styles: PosStyles(align: PosAlign.center, bold: true));
+    printer.text('Thank you!',
+        styles: PosStyles(align: PosAlign.center, bold: true));
 
     printer.feed(1);
     printer.cut();
@@ -199,7 +230,8 @@ class _MyHomePageState extends State<MyHomePage> {
       printer.disconnect();
     }
 
-    final snackBar = SnackBar(content: Text(res.msg, textAlign: TextAlign.center));
+    final snackBar =
+        SnackBar(content: Text(res.msg, textAlign: TextAlign.center));
     ScaffoldMessenger.of(ctx)
       ..removeCurrentSnackBar()
       ..showSnackBar(snackBar);
@@ -229,9 +261,15 @@ class _MyHomePageState extends State<MyHomePage> {
                 SizedBox(height: 10),
                 Text('Local ip: $localIp', style: TextStyle(fontSize: 16)),
                 SizedBox(height: 15),
-                MaterialButton(child: Text('${isDiscovering ? 'Discovering...' : 'Discover'}'), onPressed: isDiscovering ? null : () {}),
+                MaterialButton(
+                    child: Text(
+                        '${isDiscovering ? 'Discovering...' : 'Discover'}'),
+                    onPressed: isDiscovering ? null : () {}),
                 SizedBox(height: 15),
-                found >= 0 ? Text('Found: $found device(s)', style: TextStyle(fontSize: 16)) : Container(),
+                found >= 0
+                    ? Text('Found: $found device(s)',
+                        style: TextStyle(fontSize: 16))
+                    : Container(),
                 Expanded(
                   child: ListView.builder(
                     itemCount: devices.length,
@@ -250,8 +288,10 @@ class _MyHomePageState extends State<MyHomePage> {
                                   SizedBox(width: 10),
                                   Expanded(
                                     child: Column(
-                                      crossAxisAlignment: CrossAxisAlignment.start,
-                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
                                       children: <Widget>[
                                         Text(
                                           '${devices[index]}:${portController.text}',
@@ -259,7 +299,8 @@ class _MyHomePageState extends State<MyHomePage> {
                                         ),
                                         Text(
                                           'Click to print a test receipt',
-                                          style: TextStyle(color: Colors.grey[700]),
+                                          style: TextStyle(
+                                              color: Colors.grey[700]),
                                         ),
                                       ],
                                     ),

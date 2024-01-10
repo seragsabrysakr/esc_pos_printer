@@ -7,18 +7,17 @@ environment:
   sdk: ">=2.12.0 <3.0.0"
 
 dependencies:
-  charset_converter: ^1.0.3
-  cupertino_icons: ^0.1.2
+  charset_converter:
+  cupertino_icons: ^1.0.6
   esc_pos_printer:
     path: ../../
-  esc_pos_utils: ^1.0.0
+  esc_pos_utils_plus:
+    git: https://github.com/seragsabrysakr/esc_pos_utils_plus.git
   flutter:
     sdk: flutter
-  image: ^2.1.4
+  image:
   intl:
-  path_provider: ^1.6.5
-  ping_discover_network: ^0.2.0+1
-  qr_flutter: ^3.2.0
+  qr_flutter:
   # esc_pos_utils:
   # path: ../../../esc_pos_utils
 

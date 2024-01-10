@@ -8,12 +8,13 @@ environment:
 
 dependencies:
   charset_converter: ^2.0.0
-  esc_pos_utils: ^1.1.0
+  esc_pos_utils_plus:
+    git: https://github.com/seragsabrysakr/esc_pos_utils_plus.git
   flutter:
     sdk: flutter
 
   flutter_pos_printer_platform_image_3: ^1.1.2
-  image: ^3.0.2
+  image: ^4.0.17
 
 dev_dependencies:
   flutter_test:
